@@ -1,7 +1,0 @@
-<%= simple_form_for [@service, @offer] do |f| %>
-  <%= f.input :title %>
-  <%= f.association :service, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
