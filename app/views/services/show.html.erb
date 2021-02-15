@@ -1,18 +1,16 @@
 <h1><%= @service.title %></h1>
 <p><%= @service.description %></p>
 
-<<<<<<< HEAD
-<% @service.offers.each do |offer| %>
-  <%= offer.title %>
-<% end %>
-
-=======
 <ul>
-  <% @offers.each do |offer| %>
+  <% @offers.where(service: 1).each do |offer| %>
     <li> <%= offer.title %> <br>
         <%= offer.description %>
         <%= offer.price %>
     </li>
   <% end %>
 </ul>
->>>>>>> 4b21342f49752e0d057373046f5bb29d2457c1d0
+
+<%= link_to new_service_offer_path(@service) do %>
+  <i class="fas fa-plus-circle"> Add a new offer</i>
+<% end %>
+
