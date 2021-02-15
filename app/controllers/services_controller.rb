@@ -5,5 +5,6 @@ class ServicesController < ApplicationController
 
   def show
     @service = Service.find(params[:id])
+    @offers = Offer.where(service_id: params[:id])
   end
 end
