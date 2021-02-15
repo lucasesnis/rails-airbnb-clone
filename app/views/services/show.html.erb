@@ -1,11 +1,7 @@
 <h1><%= @service.title %></h1>
 <p><%= @service.description %></p>
 
-<ul>
-  <% @offers.each do |offer| %>
-    <li> <%= offer.title %> <br>
-        <%= offer.description %>
-        <%= offer.price %>
-    </li>
-  <% end %>
-</ul>
+<% @service.offers.each do |offer| %>
+  <%= offer.title %>
+<% end %>
+
