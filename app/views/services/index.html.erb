@@ -1,0 +1,5 @@
+<h1> All our services </h1>
+
+<% @services.each do |service| %>
+<%= link_to service.title, service_path(service) %>
+<% end %>
