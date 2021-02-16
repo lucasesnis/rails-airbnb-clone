@@ -1,5 +1,25 @@
-<h1> All our services </h1>
+<div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Trouvez le <strong>prestataire</strong> dont vous avez <strong>besoin</strong> !</h1>
+    <p>Grâce à Hook, la plaisance redevient plaisante.</p>
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+    <div class="search-form-control form-group form-inline">
+      <input class="form-control string required m-2" type="text" name="search[query]" id="search_query" placeholder="Blanchisserie"/>
+      <input class="form-control string required m-2" type="text" name="search[query]" id="search_query" placeholder="24/08" />
+      <button name="button" type="submit" class="btn btn-flat m-2">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
+  </div>
+</div>
 
-<% @services.each do |service| %>
-<%= link_to service.title, service_path(service) %>
-<% end %>
+<div class="container">
+  <div class="cards">
+    <% @services.each do |service| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <%= link_to service.title, service_path(service) %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -2,7 +2,7 @@
 <p><%= @service.description %></p>
 
 <ul>
-  <%= @offer.where(service: 1).each do |offer| %>
+  <% @offers.each do |offer| %>
     <li> <%= offer.title %> <br>
         <%= offer.description %>
         <%= offer.price %>
@@ -10,7 +10,7 @@
   <% end %>
 </ul>
 
-<%= link_to new_service_offer_path(@service) do %>
+<%= link_to new_offer_path do %>
   <i class="fas fa-plus-circle"> Add a new offer</i>
 <% end %>
 
