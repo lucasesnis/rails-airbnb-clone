@@ -2,7 +2,7 @@
 <p><%= @service.description %></p>
 
 <ul>
-  <% @offers.where(service: 1).each do |offer| %>
+  <%= @offer.where(service: 1).each do |offer| %>
     <li> <%= offer.title %> <br>
         <%= offer.description %>
         <%= offer.price %>
