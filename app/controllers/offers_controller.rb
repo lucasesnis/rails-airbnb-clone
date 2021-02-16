@@ -1,10 +1,13 @@
 class OffersController < ApplicationController
   def index
 
-    @offers = Offer.all
-    if params[:query]
-      @offers = @offers.where(service_id: params[:query])
-    end
+    # @offers = Offer.all
+    # if params[:query]
+    #   @offers = @offers.where(service_id: params[:query])
+    # end
+
+    @offers = policy_scope(Offer)
+
   end
 
   def show
