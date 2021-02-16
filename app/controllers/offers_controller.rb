@@ -8,19 +8,18 @@ class OffersController < ApplicationController
   end
 
   def create
-    @service = Service.find(params[:service_id])
     @offer = Offer.new(offer_params)
     if current_user
       @offer.user = current_user
       if @offer.save!
         flash[:success] = "Offer successfully created"
-        redirect_to service_path(@service)
+        redirect_to offer_path(@offer)
       else
         flash[:error] = "You are not connected !"
-        redirect_to services_path
+        redirect_to root_path
       end
     else
-      redirect_to services_path, notice: 'You are not logged in.'
+      redirect_to root_path, notice: 'You are not logged in.'
     end
   end
 
