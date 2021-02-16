@@ -20,10 +20,10 @@ class OffersController < ApplicationController
         redirect_to offer_path(@offer)
       else
         flash[:error] = "You are not connected !"
-        redirect_to root_path
+        redirect_to new_user_registration_path
       end
     else
-      redirect_to root_path, notice: 'You are not logged in.'
+      redirect_to new_user_registration_path, notice: 'You are not logged in.'
     end
   end
 
