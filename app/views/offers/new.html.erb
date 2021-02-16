@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-4">
 	<%= simple_form_for [@service, @offer] do |f| %>
 	  <%= f.input :title, label: 'Titre' %>
 	  <%= f.association :service, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
