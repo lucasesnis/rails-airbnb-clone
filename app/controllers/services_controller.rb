@@ -6,6 +6,6 @@ class ServicesController < ApplicationController
   def show
     @service = Service.find(params[:id])
     authorize @service
-    # @offers = Offer.where(service_id: params[:id])
+    @offers = Offer.where(service_id: params[:id])
   end
 end
