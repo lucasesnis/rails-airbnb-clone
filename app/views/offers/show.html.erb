@@ -3,3 +3,4 @@
 <%= @offer.price %> €
 <%= @offer.user.first_name %>
 <%= @offer.user.last_name %>
+<%= link_to "Book an offer", new_offer_transaction_path(@offer) %>

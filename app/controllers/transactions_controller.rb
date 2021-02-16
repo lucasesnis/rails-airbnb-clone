@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   def index
-    @transactions = Transaction.all
+    @transactions = policy_scope(Transaction)
   end
 
   def show
@@ -8,16 +8,19 @@ class TransactionsController < ApplicationController
   end
 
   def new
+    @offer = Offer.find(params[:offer_id])
     @transaction = Transaction.new
     authorize @transaction
   end
 
   def create
+    @offer = Offer.find(params[:offer_id])
     @transaction = Transaction.new(transaction_params)
     authorize @transaction
     if current_user
       @transaction.user = current_user
-      @transaction.offer = Offer.find(params[:offer_id])
+      @transaction.offer = @offer
+      @transaction.status = "pending"
       create_transaction
     else
       redirect_to offers_path, notice: 'You are not logged in.'
