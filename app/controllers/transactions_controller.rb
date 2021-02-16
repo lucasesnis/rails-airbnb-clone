@@ -1,10 +1,12 @@
 class TransactionsController < ApplicationController
   def index
     @transactions = policy_scope(Transaction)
+    @transactions.where(user: current_user)
   end
 
   def show
     @transaction = Transaction.find(params[:id])
+    authorize @transaction
   end
 
   def new

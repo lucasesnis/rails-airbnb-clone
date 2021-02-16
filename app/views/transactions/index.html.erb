@@ -1,2 +1,8 @@
 <h1>Transactions#index</h1>
 <p>Find me in app/views/transactions/index.html.erb</p>
+
+<ul>
+<% @transactions.each do |transaction| %>
+  <li><%= link_to Offer.find(transaction.offer_id).title, offer_transaction_path(transaction.offer_id, transaction) %></li>
+<% end %>
+</ul>
