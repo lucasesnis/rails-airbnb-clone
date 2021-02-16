@@ -4,7 +4,6 @@ class OffersController < ApplicationController
   end
 
   def new
-    @service = Service.find(params[:service_id])
     @offer = Offer.new
   end
 
