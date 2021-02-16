@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon w-100 fixed-top">
   <div class="collapse navbar-collapse">
   <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <%= image_tag "hook.png" %>
   <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -29,10 +29,10 @@
       <ul class="list-unstyled mb-0">
         <div class="d-flex">
           <li class="nav-item active">
-            <%= link_to "Se connecter", new_user_session_path, class: "nav-link btn m-3 rounded" %>
+            <%= link_to "Se connecter", new_user_session_path, class: "nav-link btn rounded" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Créer un compte", new_user_registration_path, class: "nav-link btn btn-success m-3" %>
+            <%= link_to "Créer un compte", new_user_registration_path, class: "nav-link btn btn-success" %>
           </li>
         </div>
       </ul>
