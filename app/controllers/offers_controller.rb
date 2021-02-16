@@ -13,7 +13,7 @@ class OffersController < ApplicationController
         flash[:success] = "Offer successfully created"
         redirect_to service_path(@service)
       else
-        flash[:error] = "Something went wrong"
+        flash[:error] = "You are not connected !"
         redirect_to services_path
       end
     else
