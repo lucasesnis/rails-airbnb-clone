@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   def index
-    @transactions = Transaction.all
+    @transactions = policy_scope(Transaction)
   end
 
   def show
@@ -8,21 +8,20 @@ class TransactionsController < ApplicationController
   end
 
   def new
+    @offer = Offer.find(params[:offer_id])
     @transaction = Transaction.new
+    authorize @transaction
   end
 
   def create
-    @user = User.find(params[:user_id])
     @offer = Offer.find(params[:offer_id])
+    @transaction = Transaction.new(transaction_params)
+    authorize @transaction
     if current_user
       @transaction.user = current_user
-      if @transaction.save!
-        flash[:success] = "Transaction successfully created"
-        redirect_to offer_path(@offer)
-      else
-        flash[:error] = "Something went wrong"
-        redirect_to offers_path
-      end
+      @transaction.offer = @offer
+      @transaction.status = "pending"
+      create_transaction
     else
       redirect_to offers_path, notice: 'You are not logged in.'
     end
@@ -32,5 +31,21 @@ class TransactionsController < ApplicationController
   end
 
   def update
+  end
+
+  private
+
+  def transaction_params
+    params.require(:transaction).permit(:boat_size, :transaction_price, :date)
+  end
+
+  def create_transaction
+    if @transaction.save!
+      flash[:success] = "Transaction successfully created"
+      redirect_to offer_path(@offer)
+    else
+      flash[:error] = "Something went wrong"
+      redirect_to offers_path
+    end
   end
 end
