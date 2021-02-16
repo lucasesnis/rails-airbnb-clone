@@ -6,4 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Service.destroy_all
-Service.create!(title: "Mécanicien", description: "Je répare vos bateaux")
+Service.create!(title: "Mécanicien", description: "Réparation de véhicules maritimes")
+Service.create!(title: "Blanchisserie", description: "Nettoyage de linge")
+Service.create!(title: "Ménage", description: "Profitez de nos équipes de ménage !")
