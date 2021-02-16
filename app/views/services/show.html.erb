@@ -3,14 +3,15 @@
 
 <ul>
   <% @offers.each do |offer| %>
-    <li> <%= link_to offer.title, offer_path(offer) %> <br>
-        <%= offer.description %>
-        <%= offer.price %> €
+    <li>
+      <%= link_to offer.title, offer_path(offer) %><br>
+      <%= offer.description %>
+      <%= offer.price %>
     </li>
   <% end %>
 </ul>
 
-<%= link_to new_offer_path(@service) do %>
+<%= link_to new_offer_path do %>
   <i class="fas fa-plus-circle"> Add a new offer</i>
 <% end %>
 

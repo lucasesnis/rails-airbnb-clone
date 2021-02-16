@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'transactions/edit'
   get 'transactions/update'
   devise_for :users
-  root to: 'pages#home'
+  root to: 'services#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, only: [:index, :show]
   resources :services, only: [:index, :show]
