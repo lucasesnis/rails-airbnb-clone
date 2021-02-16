@@ -4,9 +4,6 @@ class ServicesController < ApplicationController
 
   def index
     @services = policy_scope(Service)
-    if params[:query]
-      @offers = @offers.where(service_id: params[:query])
-    end
   end
 
   def show

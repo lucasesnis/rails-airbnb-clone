@@ -1,8 +1,12 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     @offers = policy_scope(Offer)
+    if params[:query]
+      @offers = @offers.where(service_id: params[:query])
+    end
   end
 
   def show
