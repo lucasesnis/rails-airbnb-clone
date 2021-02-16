@@ -3,25 +3,30 @@ class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
+
+    # @offers = Offer.all
+    # if params[:query]
+    #   @offers = @offers.where(service_id: params[:query])
+    # end
+
     @offers = policy_scope(Offer)
+
     if params[:query]
       @offers = @offers.where(service_id: params[:query])
     end
+
   end
 
   def show
     @offer = Offer.find(params[:id])
-    authorize @offer
   end
 
   def new
     @offer = Offer.new
-    authorize @offer
   end
 
   def create
     @offer = Offer.new(offer_params)
-    authorize @offer
     if current_user
       @offer.user = current_user
       if @offer.save!
