@@ -1,5 +1,9 @@
-<%= @offer.title %> 
-<%= @offer.description %> 
-<%= @offer.price %> €
-<%= @offer.user.first_name %>
-<%= @offer.user.last_name %>
+<div class="container m-3 d-flex flex-column">
+    <h1><%= @offer.title %></h1> <br>
+    <div><%= @offer.price %> € </div> <br>
+    <p><%= @offer.description %></p> <br>
+</div>
+<div class="btn btn-primary"> <%= link_to "Reserver Maintenant!",  transactions_new_path%></div>
+
+
+  <%= link_to "Edit Offer", edit_offer_path(@offer)  %>
