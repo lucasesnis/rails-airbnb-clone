@@ -1,6 +1,5 @@
 class OffersController < ApplicationController
   def new
-    @service = Service.find(params[:service_id])
     @offer = Offer.new
   end
 
