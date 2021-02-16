@@ -1,5 +1,18 @@
-<%= @offer.title %> 
-<%= @offer.description %> 
-<%= @offer.price %> €
-<%= @offer.user.first_name %>
-<%= @offer.user.last_name %>
+
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <div class="d-flex justify-content-between border-bottom align-items-center my-4">
+          <h1><%= @offer.title %>:</h1>
+          <h1><%= @offer.price %> €</h1>
+        </div>
+        <p><%= @offer.description %></p>
+      </div>
+      <div class="col-4">
+        <img src="https://geeko.lesoir.be/wp-content/uploads/sites/58/2019/03/capture-e1552573152526.png" height="400px" width="400px" alt="Map picture" class="m-3">
+      </div>
+    </div>
+  </div>
+  <div class="btn btn-success"><%= link_to "Reserver Maintenant!",  transactions_new_path%></div>
+</div>
