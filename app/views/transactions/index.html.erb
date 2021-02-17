@@ -6,7 +6,7 @@
       <% if transaction.boat_size %>
         <div class="card-trip border w-75 mx-0 my-4">
            <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to Offer.find(transaction.offer_id).title, offer_transaction_path(transaction.offer_id, transaction) %></div>
-          <div class="card-trip-infos position-relative d-flex flex-column justify-content-space-around align-items-center">
+          <div class="card-trip-infos d-flex flex-column align-items-center">
               Boat size: <%= transaction.boat_size %>m2 <br>
               Date: <%= transaction.date %><br>
               <% if transaction.status %>
