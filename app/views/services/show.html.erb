@@ -1,13 +1,11 @@
 <div class="container">
   <h1><%= @service.title %></h1>
   <p><%= @service.description %></p>
-</div>
  <div class="row">
   <div class="container cards">
     <% @offers.each do |offer| %>
       <div class="card-trip border w-100 m-2 my-4">
-        <%= offer.user.photo %>
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" height=200 class="w-100"/>
+        <img src="https://picsum.photos/200/300" height=200 class="w-100"/>
         <div class="card-trip-infos position-relative d-flex justify-content-space-between align-items-end">
           <div class="p-3">
             <h5><%= link_to offer.title, offer_path(offer) %></h5>
@@ -20,3 +18,4 @@
   </div>
 </div>
 
+</div>

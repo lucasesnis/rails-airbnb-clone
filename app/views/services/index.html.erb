@@ -19,9 +19,12 @@
 <div class="container">
   <div class="cards">
     <% @services.each do |service| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        <%= link_to service.title, service_path(service) %>
-      </div>
+      <%= link_to service_path(service) do %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://picsum.photos/200/300/?blur&random)">
+            <h3> <%= service.title %></h3>
+          </div>
+      <% end %>
     <% end %>
+
   </div>
 </div>
