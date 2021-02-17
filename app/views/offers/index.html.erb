@@ -1,18 +1,25 @@
+<div class="container">
 
-<h1> Mes offres:</h1>
-
-<div class="container cards d-flex">
-  <% @offers.each do |offer| %>
-    <div class="card-trip border w-75 mx-0 my-4">
-      <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to offer.title, offer_path(offer) %></div>
-        <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
-          Service: <%= Service.find(offer.service_id).title %> <br>
-          Proposé par: <%= User.find(offer.user_id).email %> <br>
-          Price per meter: <%= offer.price %> <br>
+ <div class="row">
+  <div class="container cards">
+    <% @offers.each do |offer| %>
+      <div class="card-trip border w-100 m-2 my-4">
+        <img src="https://picsum.photos/200/300" height=200 class="w-100"/>
+        <div class="card-trip-infos position-relative d-flex justify-content-space-between align-items-end">
+          <div class="p-3">
+            <h5><%= link_to offer.title, offer_path(offer) %></h5>
+            <p><%= offer.description %></p>
+          </div>
+          <h4 class="card-trip-pricing">€<%= offer.price %></h4>
         </div>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
+</div>
+
+
+
 
 <div class="d-flex justify-content-center">
   <div class="btn border"><%= link_to "Add an offer", new_offer_path %></div>
