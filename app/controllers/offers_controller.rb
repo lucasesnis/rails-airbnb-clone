@@ -28,6 +28,7 @@ class OffersController < ApplicationController
     authorize @offer
     if current_user
       @offer.user = current_user
+      create_offer
     else
       redirect_to new_user_registration_path, notice: 'You are not logged in.'
     end
