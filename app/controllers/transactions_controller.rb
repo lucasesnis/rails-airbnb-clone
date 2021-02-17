@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
   def index
     @transactions = policy_scope(Transaction)
-    @transactions.where(user: current_user)
+    @transactions = @transactions.where(user_id: current_user)
   end
 
   def show
@@ -23,6 +23,7 @@ class TransactionsController < ApplicationController
       @transaction.user = current_user
       @transaction.offer = @offer
       @transaction.status = "pending"
+      @transaction.transaction_price = @transaction.boat_size.to_i * @offer.price.to_i
       create_transaction
     else
       redirect_to offers_path, notice: 'You are not logged in.'
@@ -44,7 +45,7 @@ class TransactionsController < ApplicationController
   def create_transaction
     if @transaction.save!
       flash[:success] = "Transaction successfully created"
-      redirect_to offer_path(@offer)
+      redirect_to offer_transaction_path(@offer, @transaction)
     else
       flash[:error] = "Something went wrong"
       redirect_to offers_path
