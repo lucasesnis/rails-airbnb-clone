@@ -25,6 +25,7 @@
 
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="navbarDropdown">
             <%= link_to "Mes réservations", transactions_path, :class => 'dropdown-item' %>
+            <%= link_to "Mes offres", offers_path(commit: "My offers"), :class => 'dropdown-item' %>
             <%= link_to 'Mon profil', edit_user_registration_path, :class => 'dropdown-item' %>
             <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
           </div>

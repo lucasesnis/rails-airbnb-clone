@@ -7,7 +7,7 @@ class OffersController < ApplicationController
     @offers = policy_scope(Offer)
     if params[:commit] == "Trouver mon prestataire"
       @offers = @offers.where(service_id: params[:query])
-    elsif params[:commit] == "My Offers"
+    elsif params[:commit] == "My offers"
       @offers = @offers.where(user_id: current_user)
     end
   end
