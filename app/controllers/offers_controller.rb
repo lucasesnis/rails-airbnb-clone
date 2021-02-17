@@ -26,13 +26,6 @@ class OffersController < ApplicationController
     authorize @offer
     if current_user
       @offer.user = current_user
-      if @offer.save!
-        flash[:success] = "Offer successfully created"
-        redirect_to offer_path(@offer)
-      else
-        flash[:error] = "You are not connected !"
-        redirect_to new_user_registration_path
-      end
     else
       redirect_to new_user_registration_path, notice: 'You are not logged in.'
     end
@@ -42,5 +35,15 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:title, :description, :price, :service_id)
+  end
+
+  def create_offer
+    if @offer.save!
+      flash[:success] = "Offer successfully created"
+      redirect_to offer_path(@offer)
+    else
+      flash[:error] = "You are not connected !"
+      redirect_to new_user_registration_path
+    end
   end
 end
