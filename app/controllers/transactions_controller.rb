@@ -23,6 +23,7 @@ class TransactionsController < ApplicationController
       @transaction.user = current_user
       @transaction.offer = @offer
       @transaction.status = "pending"
+      @transaction.transaction_price = @transaction.boat_size.to_i * @offer.price.to_i
       create_transaction
     else
       redirect_to offers_path, notice: 'You are not logged in.'
