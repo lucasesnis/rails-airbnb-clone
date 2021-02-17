@@ -33,6 +33,23 @@ class OffersController < ApplicationController
     end
   end
 
+  def edit
+    @offer = Offer.find(params[:id])
+    authorize @offer
+  end
+
+  def update
+    @offer = Offer.find(params[:id])
+    authorize @offer
+    if @offer.update_attributes(offer_params)
+      flash[:success] = "Object was successfully updated"
+      redirect_to @offer
+    else
+      flash[:error] = "Something went wrong"
+      render 'edit'
+    end
+  end
+
   private
 
   def offer_params
