@@ -7,7 +7,6 @@ class TransactionsController < ApplicationController
   def show
     @transaction = Transaction.find(params[:id])
     authorize @transaction
-    raise
   end
 
   def new
