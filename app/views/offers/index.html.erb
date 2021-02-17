@@ -1,5 +1,18 @@
-<ul>
-<% @offers.each do |offer| %>
-  <li><%= link_to offer.title, offer_path(offer) %></li>
-<% end %>
-</ul>
+<h1> Mes offres:</h1>
+
+<div class="container cards d-flex">
+  <% @offers.each do |offer| %>
+    <div class="card-trip border w-75 mx-0 my-4">
+      <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to offer.title, offer_path(offer) %></div>
+        <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
+          Service: <%= Service.find(offer.service_id).title %> <br>
+          Proposé par: <%= User.find(offer.user_id).email %> <br>
+          Price per meter: <%= offer.price %> <br>
+        </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="d-flex justify-content-center">
+  <div class="btn border"><%= link_to "Add an offer", new_offer_path %></div>
+</div>
