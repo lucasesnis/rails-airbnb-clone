@@ -15,16 +15,18 @@
   <div class="collapse navbar-collapse">
     <% if user_signed_in? %>
       <ul class="list-unstyled mb-0">
-
-           <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />       
-
-
+        <li class="nav-item dropdown">
+          <% if current_user.photo.attached? %>
+            
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://picsum.photos/200/200" />
+          <% end %>
 
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="navbarDropdown">
-            <%= link_to "Mes réservations", transactions_path , :class => 'dropdown-item'%>
+            <%= link_to "Mes réservations", transactions_path, :class => 'dropdown-item' %>
             <%= link_to 'Mon profil', edit_user_registration_path, :class => 'dropdown-item' %>
             <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
-
           </div>
         </li>
       </ul>
