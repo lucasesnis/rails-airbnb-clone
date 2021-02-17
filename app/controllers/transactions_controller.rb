@@ -46,7 +46,7 @@ class TransactionsController < ApplicationController
   def create_transaction
     if @transaction.save!
       flash[:success] = "Transaction successfully created"
-      redirect_to offer_path(@offer)
+      redirect_to offer_transaction_path(@offer, @transaction)
     else
       flash[:error] = "Something went wrong"
       redirect_to offers_path
