@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
   def index
     @transactions = policy_scope(Transaction)
-    @transactions.where(user: current_user)
+    @transactions = @transactions.where(user_id: current_user)
   end
 
   def show
