@@ -1,5 +1,17 @@
-<ul>
-<% @offers.each do |offer| %>
-  <li><%= link_to offer.title, offer_path(offer) %></li>
-<% end %>
-</ul>
+ <div class="row">
+  <div class="container cards">
+    <% @offers.each do |offer| %>
+      <div class="card-trip border w-100 m-2 my-4">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" height=200 class="w-100"/>
+        <div class="card-trip-infos position-relative d-flex justify-content-space-between align-items-end">
+          <div class="p-3">
+            <h5><%= link_to offer.title, offer_path(offer) %></h5>
+            <p><%= offer.description %></p>
+          </div>
+          <h4 class="card-trip-pricing">€<%= offer.price %></h4>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+</div>
+
