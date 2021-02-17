@@ -1,13 +1,12 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-  <div class="container">
-    <h1><%= @service.title %></h1>
-    <p><%= @service.description %></p>
-  </div>
+<div class="container">
+  <h1><%= @service.title %></h1>
+  <p><%= @service.description %></p>
 </div>
  <div class="row">
   <div class="container cards">
     <% @offers.each do |offer| %>
       <div class="card-trip border w-100 m-2 my-4">
+        <%= offer.user.photo %>
         <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" height=200 class="w-100"/>
         <div class="card-trip-infos position-relative d-flex justify-content-space-between align-items-end">
           <div class="p-3">
