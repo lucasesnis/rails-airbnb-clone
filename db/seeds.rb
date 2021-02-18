@@ -25,3 +25,16 @@ s3 = Service.new(title: "Nettoyage", description: "Besoin d'un petit coup de pol
 file = URI.open('https://www.nil-nettoyage.com/sites/default/files/styles/pleine_page/public/nil-nettoyage-bateau8.jpg')
 s3.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 s3.save!
+
+o1 = Offer.new(title: "Blanchisseur port de Cannes", description: "Plus blanc que blanc", service: Service.first, user: User.first, price: 10)
+o2 = Offer.new(title: "Blanchisseur Express", description: "Votre linge est lavé en moins de deux!", service: Service.first, user: User.last, price: 15)
+o3 = Offer.new(title: "Blanc du Nil", description: "On vous livre votre linge!", service: Service.first, user: User.first, price: 20)
+
+o1 = Offer.new(title: "Mécanique et Réparation", description: "Mécaniciens professionnels", service: Service.find_by(title: "Réparations"), user: User.first, price: 100)
+o2 = Offer.new(title: "Mécanicien du port de Cannes", description: "Un bon coup de Polish!", service: Service.find_by(title: "Réparations"), user: User.last, price: 150)
+o3 = Offer.new(title: "Bateau Mécanique", description: "Mécanique pour toute taille de bateau!", service: Service.find_by(title: "Réparations"), user: User.first, price: 200)
+
+o1 = Offer.new(title: "Nettoyeur port de Cannes", description: "La propreté c'est notre métier", service: Service.last, user: User.first, price: 10)
+o2 = Offer.new(title: "Agents de surfaces & Co", description: "Propreté avant tout", service: Service.last, user: User.last, price: 30)
+o3 = Offer.new(title: "Propreté terre & mer", description: "Pour partir en mer bien équipé", service: Service.last, user: User.first, price: 25)
+
