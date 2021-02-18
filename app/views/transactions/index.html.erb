@@ -4,20 +4,21 @@
   <div class="container cards">
     <% @transactions.each do |transaction| %>
       <% if transaction.boat_size %>
-        <div class="card-trip border w-100  mx-0 my-4">
-           <div class="border-bottom mb-2 p-2 d-flex justify-content-center"> <h6><strong><%= Offer.find(transaction.offer_id).title %></strong></h6></div>
-          <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
-              Boat size: <%= transaction.boat_size %>m2 <br>
-              Date: <%= transaction.date %><br>
-              <% if transaction.status %>
-                Status: Valid<br>
-              <% else %>
-                Status: Canceled<br>
-              <% end %>
-              Price : <%= Offer.find(transaction.offer_id).price.to_i * transaction.boat_size.to_i  %> €<br>
+        <%= link_to offer_transaction_path(transaction.offer, transaction) do %>
+          <div class="card-trip border w-100  mx-0 my-4">
+             <div class="border-bottom mb-2 p-2 d-flex justify-content-center"> <h6><strong><%= Offer.find(transaction.offer_id).title %></strong></h6></div>
+            <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
+                Boat size: <%= transaction.boat_size %>m2 <br>
+                Date: <%= transaction.date %><br>
+                <% if transaction.status %>
+                  Status: Valid<br>
+                <% else %>
+                  Status: Canceled<br>
+                <% end %>
+                Price : <%= transaction.transaction_price = Offer.find(transaction.offer_id).price.to_i * transaction.boat_size.to_i  %> €<br>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
-

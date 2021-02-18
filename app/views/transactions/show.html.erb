@@ -1,6 +1,9 @@
-<h1>Transactions#show</h1>
-<p>Find me in app/views/transactions/show.html.erb</p>
+<h1> Merci d'avoir choisit notre service de <%= @transaction.offer.service.title %> </h1>
 
-<%= @transaction.offer.title  %>
-<%= @transaction.offer.description  %>
+<h3> Votre prestataire est <%= @transaction.user.first_name %> <%= @transaction.user.last_name %></h3>
+<h3> Il viendra le <%= @transaction.date %> </h3>
+<h3> Pour <%= @transaction.transaction_price %>€ </h3>
+
+
+
 
