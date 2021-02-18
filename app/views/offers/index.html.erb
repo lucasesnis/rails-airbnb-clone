@@ -1,12 +1,19 @@
 
-<h1>Offres:</h1>
-<div class="container">
-  <%= form_tag offers_path, class: 'form-inline home-search', method: :get do %>
-    <%= select_tag 'query', options_from_collection_for_select(@services, 'id', 'title', params[:query]), class: "form-control mr-2" %>
-    <%= text_field_tag 'date', params[:date], class: "datepicker form-control mr-2" %>
-    <%= submit_tag 'Trouver mon prestataire', class: "btn btn-primary" %>
-  <% end %>
-</div>
+
+<% if params[:commit] != "My offers" %>
+  <h1>Offres:</h1>
+  <div class="container">
+    <%= form_tag offers_path, class: 'form-inline home-search', method: :get do %>
+      <%= select_tag 'query', options_from_collection_for_select(@services, 'id', 'title', params[:query]), class: "form-control mr-2" %>
+      <%= text_field_tag 'date', params[:date], class: "datepicker form-control mr-2" %>
+      <%= submit_tag 'Trouver mon prestataire', class: "btn btn-primary" %>
+    <% end %>
+  </div>
+<% elsif params[:commit] == "My offers" %>
+  <h1>Transactions en cours :</h1>
+
+  <h1>Mes offres :</h1>
+<% end %>
 
 <div class="container cards">
   <% @offers.each do |offer| %>

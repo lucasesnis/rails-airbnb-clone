@@ -9,7 +9,9 @@ class OffersController < ApplicationController
     if params[:commit] == "Trouver mon prestataire"
       @offers = @offers.where(service_id: params[:query])
     elsif params[:commit] == "My offers"
+      @offers_offer = []
       @offers = @offers.where(user_id: current_user)
+      @transactions = Transaction.where(offer_id: @offers)
     end
   end
 
