@@ -12,4 +12,12 @@ class TransactionPolicy < ApplicationPolicy
   def create?
     return true
   end
+
+  def edit?
+    update?
+  end
+
+  def update?
+    return true
+  end
 end
