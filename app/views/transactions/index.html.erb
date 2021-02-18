@@ -1,22 +1,23 @@
 <h1> Mes transactions :</h1>
-  <div class="container cards">
-    <% @transactions.each do |transaction| %>
-      <% if transaction.boat_size %>
-        <div class="card-trip border w-100  mx-0 my-4">
-           <div class="border-bottom mb-2 p-2 d-flex justify-content-center"> <h6><strong><%= Offer.find(transaction.offer_id).title %></strong></h6></div>
-          <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
-              Boat size: <%= transaction.boat_size %>m2 <br>
-              Date: <%= transaction.date %><br>
-                <%= transaction.statut %>
-              Price : <%= Offer.find(transaction.offer_id).price.to_i * transaction.boat_size.to_i  %> €<br>
-              <% if transaction.user == current_user %>
-                <% if transaction.statut == "pending" %>
-                  <%= simple_form_for [transaction.offer, transaction] do |f| %>
-                    <%= f.button :submit, 'Annuler', class: 'btn btn-primary' %>
-                  <% end %>
-                <% end %>
+<div class="container cards">
+  <% @transactions.each do |transaction| %>
+    <% if transaction.boat_size %>
+      <div class="card-trip border w-100  mx-0 my-4">
+        <div class="border-bottom mb-2 p-2 d-flex justify-content-center"> <h6><strong><%= Offer.find(transaction.offer_id).title %></strong></h6></div>
+        <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
+          Boat size: <%= transaction.boat_size %>m2 <br>
+          Date: <%= transaction.date %><br>
+          <%= transaction.statut %>
+          Price : <%= Offer.find(transaction.offer_id).price.to_i * transaction.boat_size.to_i  %> €<br>
+          <% if transaction.user == current_user %>
+              <% if transaction.statut == "pending" %>
+                <%= simple_form_for [transaction.offer, transaction] do |f| %>
+                  <%= f.button :submit, 'Annuler', class: 'btn btn-primary' %>
               <% end %>
-          </div>
-      <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
