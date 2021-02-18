@@ -9,12 +9,14 @@
           <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
               Boat size: <%= transaction.boat_size %>m2 <br>
               Date: <%= transaction.date %><br>
-              <% if transaction.status %>
-                Status: Valid<br>
-              <% else %>
-                Status: Canceled<br>
-              <% end %>
+                <%= transaction.statut %>
               Price : <%= Offer.find(transaction.offer_id).price.to_i * transaction.boat_size.to_i  %> €<br>
+              <% if transaction.user == current_user %>
+                <%= simple_form_for [transaction.offer, transaction] do |f| %>
+                <%= f.button :submit, 'Annuler', class: 'btn btn-primary' %>
+	              <% end %>
+              <% end %>
+
           </div>
         </div>
       <% end %>
