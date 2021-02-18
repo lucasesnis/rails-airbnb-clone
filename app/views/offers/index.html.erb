@@ -50,11 +50,11 @@
   <h1>Mes offres :</h1>
 <% end %>
 
-<div class="container mt-4"> 
+<div class="container mt-4">
   <div class="row">
     <div class="container cards">
       <% @offers.each do |offer| %>
-        <%= link_to offer_path(offer) do %>
+        <%= link_to offer_path(offer, date: params[:date]) do %>
             <div class="card-offer">
               <div class="text-center mb-4">
                   <%= cl_image_tag offer.user.avatar, class: "avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
