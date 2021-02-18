@@ -23,7 +23,7 @@
     <% if @offer.user_id != current_user.id %>
       <div class="container mt-4">
         <%= simple_form_for [@offer, @transaction] do |f| %>
-          <%= f.input :date, label: 'Date' %>
+          <%= f.input :date, label: 'Date', default: params[:date] %>
           <%= f.input :boat_size, label: 'Quel est la taille de votre batiment ? (en m²)' %>
           <%= f.button :submit, 'Demander une prestation', class: 'btn btn-primary' %>
         <% end %>
