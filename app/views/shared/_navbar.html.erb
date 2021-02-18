@@ -1,14 +1,14 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon w-100 fixed-top">
   <div class="collapse navbar-collapse">
   <%= link_to "/", class: "navbar-brand" do %>
-    <%= image_tag "hook.png" %>
+    <h2 class="mb-0 text-primary"><i class="fal fa-water"></i>HOOK</h2>
   <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to "Proposer un service", "/offers/new", class: "nav-link" %>
+        <%= link_to "Devenir prestataire", "/offers/new", class: "nav-link" %>
       </li>
     </ul>
   </div>
@@ -16,12 +16,8 @@
     <% if user_signed_in? %>
       <ul class="list-unstyled mb-0">
         <li class="nav-item dropdown">
-          <% if current_user.photo.attached? %>
 
-            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://picsum.photos/200/200" />
-          <% end %>
+          <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
 
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="navbarDropdown">
             <%= link_to "Mes réservations", transactions_path, :class => 'dropdown-item' %>

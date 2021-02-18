@@ -7,12 +7,9 @@
 
     <%= form_tag offers_path, class: 'form-inline home-search', method: :get do %>
       <%= select_tag 'query', options_for_select(Service.all.collect{|u| [u.title, u.id]}), class: "form-control mr-2" %>
-      <%= text_field_tag 'date', DateTime.now, class: "datepicker form-control mr-2" %>
+      <%= text_field_tag 'date', Date.today.strftime("%d-%m-%Y"), class: "datepicker form-control mr-2" %>
       <%= submit_tag 'Trouver mon prestataire', class: "btn btn-primary" %>
     <% end %>
-
-
-
   </div>
 </div>
 
@@ -20,11 +17,10 @@
   <div class="cards">
     <% @services.each do |service| %>
       <%= link_to service_path(service) do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://picsum.photos/200/300/?blur&random)">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path service.photo.key, crop: :fill %>')">
             <h3> <%= service.title %></h3>
           </div>
       <% end %>
     <% end %>
-
   </div>
 </div>
