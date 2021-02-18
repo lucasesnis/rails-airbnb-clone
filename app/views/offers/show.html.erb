@@ -18,24 +18,24 @@
     </div>
   </div>
 
-  <% if user_signed_in? %>
 
-    <% if @offer.user_id != current_user.id %>
-      <div class="container mt-4">
-        <%= simple_form_for [@offer, @transaction] do |f| %>
-          <%= f.input :date, label: 'Date' %>
-          <%= f.input :boat_size, label: 'Quel est la taille de votre batiment ? (en m²)' %>
-          <%= f.button :submit, 'Demander une prestation', class: 'btn btn-primary' %>
-        <% end %>
-      </div>
-    <% elsif @offer.user_id == current_user.id %>
-      <div class="container mt-4">
-        <%= link_to edit_offer_path(@offer) do %><button type="button" class="btn btn-warning">Modifier l'offre</button><% end %>
-        <%= link_to offer_path(@offer) do %><button type="button" class="btn btn-danger">Supprimer l'offre</button><% end %>
-      </div>
-    <% end %>
-  <% else %>
+<% if user_signed_in? %>
+  <% if @offer.user_id != current_user.id %>
+    <div class="container mt-4">
+      <%= simple_form_for [@offer, @transaction] do |f| %>
+
+        <%= f.input :date, label: 'Date', as: :date, html5: true, input_html: {value: @date}%>
+        <%= f.input :boat_size, label: 'Quel est la taille de votre batiment ? (en m²)' %>
+        <%= f.button :submit, 'Demander une prestation', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  <% elsif @offer.user_id == current_user.id %>
+    <div class="container mt-4">
+      <%= link_to edit_offer_path(@offer) do %><button type="button" class="btn btn-warning">Modifier l'offre</button><% end %>
+      <%= link_to offer_path(@offer) do %><button type="button" class="btn btn-danger">Supprimer l'offre</button><% end %>
+    </div>
+<% else %>
     <h4 class="pt-4">Connectez-vous pour réserver un créneau !</h4>
-
+  <% end %>
   <% end %>
 </div>
