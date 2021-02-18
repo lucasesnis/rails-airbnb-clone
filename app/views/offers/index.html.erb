@@ -13,7 +13,20 @@
   </div>
 <% elsif params[:commit] == "My offers" %>
   <h1>Transactions en cours :</h1>
-
+  <div class="container cards">
+    <% @transactions.each do |transaction| %>
+      <div class="card-trip border w-100 mx-0 my-4">
+        <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to transaction.offer.title, offer_transaction_path(transaction.offer, transaction) %></div>
+          <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
+            Service: <%= Service.find(transaction.offer.service_id).title %> <br>
+            Demandé par: <%= User.find(transaction.user_id).first_name %> <%= User.find(transaction.user_id).last_name %> <br>
+            Nombre de m²: <%= transaction.boat_size %> <br>
+            Prix total: <%= transaction.transaction_price %> <br>
+            Statut : <%= transaction.statut %>
+          </div>
+      </div>
+    <% end %>
+  </div>
   <h1>Mes offres :</h1>
 <% end %>
 
@@ -23,7 +36,7 @@
       <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to offer.title, offer_path(offer) %></div>
         <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
           Service: <%= Service.find(offer.service_id).title %> <br>
-          Proposé par: <%= User.find(offer.user_id).email %> <br>
+          Proposé par: <%= User.find(offer.user_id).first_name %> <%= User.find(offer.user_id).last_name %>  <br>
           Prix au m2: <%= offer.price %> <br>
         </div>
     </div>

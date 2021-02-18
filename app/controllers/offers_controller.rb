@@ -6,10 +6,10 @@ class OffersController < ApplicationController
   def index
     @offers = policy_scope(Offer)
     @services = Service.all
-    if params[:commit] == "Trouver mon prestataire"
+    case params[:commit]
+    when "Trouver mon prestataire"
       @offers = @offers.where(service_id: params[:query])
-    elsif params[:commit] == "My offers"
-      @offers_offer = []
+    when "My offers"
       @offers = @offers.where(user_id: current_user)
       @transactions = Transaction.where(offer_id: @offers)
     end
