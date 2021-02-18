@@ -6,6 +6,7 @@ class TransactionsController < ApplicationController
 
   def show
     @transaction = Transaction.find(params[:id])
+    @transaction.transaction_price = @transaction.offer.price.to_i * @transaction.boat_size.to_i
     authorize @transaction
   end
 
