@@ -1,3 +1,5 @@
+<%= link_to "Back", services_path %>
+
 <div class="container">
   <h1><%= @service.title %></h1>
   <p><%= @service.description %></p>
@@ -17,8 +19,5 @@
     <% end %>
   </div>
 </div>
-</div>
-<div class="d-flex justify-content-center">
-  <div class="btn border"><%= link_to "Add an offer", new_offer_path %></div>
 </div>
 
