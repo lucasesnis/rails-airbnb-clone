@@ -20,7 +20,7 @@
   <div class="cards">
     <% @services.each do |service| %>
       <%= link_to service_path(service) do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://picsum.photos/200/300/?blur&random)">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path service.photo.key, crop: :fill %>')">
             <h3> <%= service.title %></h3>
           </div>
       <% end %>
