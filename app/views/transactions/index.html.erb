@@ -12,9 +12,11 @@
                 <%= transaction.statut %>
               Price : <%= Offer.find(transaction.offer_id).price.to_i * transaction.boat_size.to_i  %> €<br>
               <% if transaction.user == current_user %>
-                <%= simple_form_for [transaction.offer, transaction] do |f| %>
-                  <%= f.button :submit, 'Annuler', class: 'btn btn-primary' %>
-	              <% end %>
+                <% if transaction.statut == "pending" %>
+                  <%= simple_form_for [transaction.offer, transaction] do |f| %>
+                    <%= f.button :submit, 'Annuler', class: 'btn btn-primary' %>
+                  <% end %>
+                <% end %>
               <% end %>
           </div>
       <% end %>
