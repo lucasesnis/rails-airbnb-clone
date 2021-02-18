@@ -13,7 +13,7 @@
 <div class="container cards">
   <% @offers.each do |offer| %>
     <div class="card-trip border w-100 mx-0 my-4">
-      <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to offer.title, offer_path(offer) %></div>
+      <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to offer.title, offer_path(offer, date: params[:date]) %></div>
         <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
           Service: <%= Service.find(offer.service_id).title %> <br>
           Proposé par: <%= User.find(offer.user_id).email %> <br>

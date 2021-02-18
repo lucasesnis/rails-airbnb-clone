@@ -15,6 +15,9 @@ class OffersController < ApplicationController
 
   def show
     @offer = Offer.find(params[:id])
+    if params[:date]
+      @date = Date.parse(params[:date])
+    end
     authorize @offer
     @transaction = Transaction.new
   end
