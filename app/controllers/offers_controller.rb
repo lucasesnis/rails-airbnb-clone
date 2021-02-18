@@ -5,6 +5,7 @@ class OffersController < ApplicationController
 
   def index
     @offers = policy_scope(Offer)
+    @services = Service.all
     if params[:commit] == "Trouver mon prestataire"
       @offers = @offers.where(service_id: params[:query])
     elsif params[:commit] == "My offers"
