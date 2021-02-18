@@ -8,6 +8,7 @@ class ServicesController < ApplicationController
 
   def show
     @service = Service.find(params[:id])
+    @services = Service.all
     authorize @service
     @offers = Offer.where(service_id: params[:id])
   end

@@ -14,7 +14,7 @@
     <% @transactions.each do |transaction| %>
       <% if transaction.statut == "pending" %>
         <div class="card-trip border w-100 mx-0 my-4">
-          <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to transaction.offer.title, offer_transaction_path(transaction.offer, transaction) %></div>
+          <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to transaction.offer.title, offer_transaction_path(transaction.offer, transaction, date: params[:date]) %></div>
             <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
               Service: <%= Service.find(transaction.offer.service_id).title %> <br>
               Demandé par: <%= User.find(transaction.user_id).first_name %> <%= User.find(transaction.user_id).last_name %> <br>
@@ -44,17 +44,18 @@
               Statut : <%= transaction.statut %>
             </div>
         </div>
-      <%end%>
+      <% end %>
     <% end %>
   </div>
   <h1>Mes offres :</h1>
 <% end %>
 
-<div class="container mt-4"> 
+<div class="container mt-4">
   <div class="row">
     <div class="container cards">
       <% @offers.each do |offer| %>
-        <%= link_to offer_path(offer) do %>
+
+        <%= link_to offer_path(offer, date: params[:date]) do %>
             <div class="card-offer">
               <div class="text-center mb-4">
                   <%= cl_image_tag offer.user.avatar, class: "avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
