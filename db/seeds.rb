@@ -30,11 +30,11 @@ o1 = Offer.create!(title: "Blanchisseur port de Cannes", description: "Plus blan
 o2 = Offer.create!(title: "Blanchisseur Express", description: "Votre linge est lavé en moins de deux!", service: Service.first, user: User.find_by(email: "lucas.esnis@skema.edu"), price: 15)
 o3 = Offer.create!(title: "Blanc du Nil", description: "On vous livre votre linge!", service: Service.first, user: User.find_by(email: "jmathieu.1997@gmail.com"), price: 20)
 
-o1 = Offer.create!(title: "Mécanique et Réparation", description: "Mécaniciens professionnels", service: Service.find_by(title: "Réparations"), user: User.find_by(email: "esnis.Lucas@gmail.com", price: 100)
-o2 = Offer.create!(title: "Mécanicien du port de Cannes", description: "Un bon coup de Polish!", service: Service.find_by(title: "Réparations"), user: User.find_by(email: "lucas.esnis@skema.edu"), price: 150)
-o3 = Offer.create!(title: "Bateau Mécanique", description: "Mécanique pour toute taille de bateau!", service: Service.find_by(title: "Réparations"), user: User.find_by(email: "jmathieu.1997@gmail.com"), price: 200)
+o4 = Offer.create!(title: "Mécanique et Réparation", description: "Mécaniciens professionnels", service: Service.find_by(title: "Réparations"), user: User.find_by(email: "esnis.Lucas@gmail.com"), price: 100)
+o5 = Offer.create!(title: "Mécanicien du port de Cannes", description: "Un bon coup de Polish!", service: Service.find_by(title: "Réparations"), user: User.find_by(email: "lucas.esnis@skema.edu"), price: 150)
+o6 = Offer.create!(title: "Bateau Mécanique", description: "Mécanique pour toute taille de bateau!", service: Service.find_by(title: "Réparations"), user: User.find_by(email: "jmathieu.1997@gmail.com"), price: 200)
 
-o1 = Offer.create!(title: "Nettoyeur port de Cannes", description: "La propreté c'est notre métier", service: Service.last, user: User.find_by(email: "esnis.Lucas@gmail.com", price: 10)
-o2 = Offer.create!(title: "Agents de surfaces & Co", description: "Propreté avant tout", service: Service.last, user: User.find_by(email: "lucas.esnis@skema.edu"), price: 30)
-o3 = Offer.create!(title: "Propreté terre & mer", description: "Pour partir en mer bien équipé", service: Service.last, user: User.find_by(email: "jmathieu.1997@gmail.com"), price: 25)
+o7 = Offer.create!(title: "Nettoyeur port de Cannes", description: "La propreté c'est notre métier", service: Service.last, user: User.find_by(email: "esnis.Lucas@gmail.com"), price: 10)
+o8 = Offer.create!(title: "Agents de surfaces & Co", description: "Propreté avant tout", service: Service.last, user: User.find_by(email: "lucas.esnis@skema.edu"), price: 30)
+o9 = Offer.create!(title: "Propreté terre & mer", description: "Pour partir en mer bien équipé", service: Service.last, user: User.find_by(email: "jmathieu.1997@gmail.com"), price: 25)
 
