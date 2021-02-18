@@ -57,7 +57,7 @@
         <%= link_to offer_path(offer) do %>
             <div class="card-offer">
               <div class="text-center mb-4">
-                  <%= cl_image_tag current_user.avatar, class: "avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <%= cl_image_tag offer.user.avatar, class: "avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                   <h5 class="pt-4"><%= offer.user.first_name %> <%= offer.user.last_name %></h5>
                   <p class=""><%= offer.title %></p>
                 </div>
