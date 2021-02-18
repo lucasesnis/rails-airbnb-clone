@@ -1,5 +1,34 @@
+<div class="pl-2 pt-3"> <%= link_to "< Back", services_path, class: "back" %> </div>
 
-<h1>Offres:</h1>
+
+
+<% if params[:commit] != "My offers" %>
+  <h1>Offres:</h1>
+  <div class="container">
+    <%= form_tag offers_path, class: 'form-inline home-search', method: :get do %>
+      <%= select_tag 'query', options_from_collection_for_select(@services, 'id', 'title', params[:query]), class: "form-control mr-2" %>
+      <%= text_field_tag 'date', params[:date], class: "datepicker form-control mr-2" %>
+      <%= submit_tag 'Trouver mon prestataire', class: "btn btn-primary" %>
+    <% end %>
+  </div>
+<% elsif params[:commit] == "My offers" %>
+  <h1>Transactions en cours :</h1>
+  <div class="container cards">
+    <% @transactions.each do |transaction| %>
+      <div class="card-trip border w-100 mx-0 my-4">
+        <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to transaction.offer.title, offer_transaction_path(transaction.offer, transaction) %></div>
+          <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
+            Service: <%= Service.find(transaction.offer.service_id).title %> <br>
+            Demandé par: <%= User.find(transaction.user_id).first_name %> <%= User.find(transaction.user_id).last_name %> <br>
+            Nombre de m²: <%= transaction.boat_size %> <br>
+            Prix total: <%= transaction.transaction_price %> <br>
+            Statut : <%= transaction.statut %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+  <h1>Mes offres :</h1>
+<% end %>
 
 <div class="container cards">
   <% @offers.each do |offer| %>
@@ -7,7 +36,7 @@
       <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to offer.title, offer_path(offer) %></div>
         <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
           Service: <%= Service.find(offer.service_id).title %> <br>
-          Proposé par: <%= User.find(offer.user_id).email %> <br>
+          Proposé par: <%= User.find(offer.user_id).first_name %> <%= User.find(offer.user_id).last_name %>  <br>
           Prix au m2: <%= offer.price %> <br>
         </div>
     </div>

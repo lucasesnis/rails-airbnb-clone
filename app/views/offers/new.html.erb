@@ -1,3 +1,5 @@
+<div class="pl-2 pt-3"><%= link_to "< Back", offers_path, class: "back"  %></div>
+
 <div class="container mt-4">
 	<%= simple_form_for [@service, @offer] do |f| %>
 	  <%= f.input :title, label: 'Titre' %>
