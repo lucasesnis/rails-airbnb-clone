@@ -7,7 +7,6 @@ const flatpickrInit = () => {
   const calendar = document.querySelector('.datepicker');
   if (calendar) {
 	flatpickr(".datepicker", {
-	    dateFormat: "Y-m-d H:i",
 	    minDate: "today",
 	    dateFormat: "d-m-Y",
 	});
