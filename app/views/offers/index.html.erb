@@ -1,9 +1,6 @@
 <div class="pl-2 pt-3"> <%= link_to "< Back", services_path, class: "back" %> </div>
 
-
-
 <% if params[:commit] != "My offers" %>
-  <h1>Offres:</h1>
   <div class="container">
     <%= form_tag offers_path, class: 'form-inline home-search', method: :get do %>
       <%= select_tag 'query', options_from_collection_for_select(@services, 'id', 'title', params[:query]), class: "form-control mr-2" %>
@@ -12,35 +9,68 @@
     <% end %>
   </div>
 <% elsif params[:commit] == "My offers" %>
-  <h1>Transactions en cours :</h1>
+  <h1>Transactions en attente :</h1>
   <div class="container cards">
     <% @transactions.each do |transaction| %>
-      <div class="card-trip border w-100 mx-0 my-4">
-        <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to transaction.offer.title, offer_transaction_path(transaction.offer, transaction) %></div>
-          <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
-            Service: <%= Service.find(transaction.offer.service_id).title %> <br>
-            Demandé par: <%= User.find(transaction.user_id).first_name %> <%= User.find(transaction.user_id).last_name %> <br>
-            Nombre de m²: <%= transaction.boat_size %> <br>
-            Prix total: <%= transaction.transaction_price %> <br>
-            Statut : <%= transaction.statut %>
-          </div>
-      </div>
+      <% if transaction.statut == "pending" %>
+        <div class="card-trip border w-100 mx-0 my-4">
+          <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to transaction.offer.title, offer_transaction_path(transaction.offer, transaction) %></div>
+            <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
+              Service: <%= Service.find(transaction.offer.service_id).title %> <br>
+              Demandé par: <%= User.find(transaction.user_id).first_name %> <%= User.find(transaction.user_id).last_name %> <br>
+              Nombre de m²: <%= transaction.boat_size %> <br>
+              Prix total: <%= transaction.transaction_price %> <br>
+              Statut : <%= transaction.statut %>
+              <%= simple_form_for [transaction.offer, transaction] do |f| %>
+                <%= f.button :submit, 'Accepter', class: 'btn btn-success' %>
+                <%= f.button :submit, 'Refuser', class: 'btn btn-danger' %>
+              <% end %>
+            </div>
+        </div>
+      <%end%>
+    <% end %>
+  </div>
+  <h1>Transactions acceptées :</h1>
+  <div class="container cards">
+    <% @transactions.each do |transaction| %>
+      <% if transaction.statut == "Confirmed" %>
+        <div class="card-trip border w-100 mx-0 my-4">
+          <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to transaction.offer.title, offer_transaction_path(transaction.offer, transaction) %></div>
+            <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
+              Service: <%= Service.find(transaction.offer.service_id).title %> <br>
+              Demandé par: <%= User.find(transaction.user_id).first_name %> <%= User.find(transaction.user_id).last_name %> <br>
+              Nombre de m²: <%= transaction.boat_size %> <br>
+              Prix total: <%= transaction.transaction_price %> <br>
+              Statut : <%= transaction.statut %>
+            </div>
+        </div>
+      <%end%>
     <% end %>
   </div>
   <h1>Mes offres :</h1>
 <% end %>
 
-<div class="container cards">
-  <% @offers.each do |offer| %>
-    <div class="card-trip border w-100 mx-0 my-4">
-      <div class="border-bottom mb-2 p-2 d-flex justify-content-center"><%= link_to offer.title, offer_path(offer, date: params[:date]) %></div>
-        <div class="card-trip-infos d-flex flex-column align-items-center pl-3">
-          Service: <%= Service.find(offer.service_id).title %> <br>
-          Proposé par: <%= User.find(offer.user_id).first_name %> <%= User.find(offer.user_id).last_name %>  <br>
-          Prix au m2: <%= offer.price %> <br>
-        </div>
+<div class="container mt-4"> 
+  <div class="row">
+    <div class="container cards">
+      <% @offers.each do |offer| %>
+        <%= link_to offer_path(offer) do %>
+            <div class="card-offer">
+              <div class="text-center mb-4">
+                  <%= cl_image_tag current_user.avatar, class: "avatar-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                  <h5 class="pt-4"><%= offer.user.first_name %> <%= offer.user.last_name %></h5>
+                  <p class=""><%= offer.title %></p>
+                </div>
+                <div class="d-flex justify-content-end align-items-baseline">
+                  <h4 class="mb-0"><%= offer.price %>€</h4>
+                  <p class="mb-0 metre">/m²</p>
+                </div>
+            </div>
+        <% end %>
+      <% end %>
+
     </div>
-  <% end %>
+  </div>
 </div>
 
 <div class="d-flex justify-content-center">
