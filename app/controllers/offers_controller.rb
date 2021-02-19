@@ -8,7 +8,11 @@ class OffersController < ApplicationController
     @services = Service.all
     case params[:commit]
     when "Trouver mon prestataire"
-      @offers = @offers.where(service_id: params[:query])
+      if params[:query] == ""
+        @offers = Offer.all
+      else
+        @offers = @offers.where(service_id: params[:query])
+      end
     when "My offers"
       @offers = @offers.where(user_id: current_user)
       @transactions = Transaction.where(offer_id: @offers)
