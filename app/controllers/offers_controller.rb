@@ -57,6 +57,17 @@ class OffersController < ApplicationController
     end
   end
 
+  def destroy
+    @offer = Offer.find(params[:id])
+    authorize @offer
+    if @offer.destroy
+      flash[:success] = 'Object was successfully deleted.'
+    else
+      flash[:error] = 'Something went wrong'
+    end
+    redirect_to offers_path
+  end
+
   private
 
   def offer_params
