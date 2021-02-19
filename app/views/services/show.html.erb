@@ -1,10 +1,10 @@
-<div class="banner show mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @service.photo.key %>');
+<div class="banner-show mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @service.photo.key %>');
 ">
   <div class="d-flex flex-column justify-content-center home-form">
     <h1><%= @service.title %></h1>
     <p><%= @service.description %></p>
     <%= form_tag offers_path, class: 'form-inline home-search', method: :get do %>
-      <%= select_tag 'query', options_from_collection_for_select(@services, 'id', 'title', params[:id]), prompt: 'Toutes nos offres', class: "form-control mr-2" %>
+      <%= select_tag 'query', options_from_collection_for_select(@services, 'id', 'title', params[:id]), class: "form-control mr-2" %>
       <%= text_field_tag 'date', Date.today.strftime("%d-%m-%Y"), class: "datepicker form-control mr-2" %>
       <%= submit_tag 'Trouver mon prestataire', class: "btn btn-primary" %>
     <% end %>
@@ -12,7 +12,7 @@
 </div>
 
 <div class="container">
-  <h2 class="my-5">Les offres à la une</h2>
+  <h2 class="my-4">Les offres à la une</h2>
 
   <div class="row">
     <div class="container cards mb-2">
@@ -33,5 +33,5 @@
       <% end %>
     </div>
   </div>
-  <div class=" d-flex justify-content-end mb-2"> <%= link_to "Toutes les offres >", offers_path(query: @service, commit: "Trouver mon prestataire"), class: "offer_link btn border" %></div>
+  <div class=" d-flex justify-content-end"> <%= link_to "Toutes les offres >", offers_path(query: @service, commit: "Trouver mon prestataire"), class: "offer_link btn border" %></div>
 </div>
