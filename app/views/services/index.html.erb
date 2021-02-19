@@ -6,7 +6,7 @@
 
 
     <%= form_tag offers_path, class: 'form-inline home-search', method: :get do %>
-      <%= select_tag 'query', options_for_select(Service.all.collect{|u| [u.title, u.id]}), class: "form-control mr-2" %>
+      <%= select_tag 'query', options_for_select(Service.all.collect{|u| [u.title, u.id]}), prompt: "Toutes nos offres", class: "form-control mr-2"%>
       <%= text_field_tag 'date', Date.today, class: "datepicker form-control mr-2" %>
       <%= submit_tag 'Trouver mon prestataire', class: "btn btn-primary" %>
     <% end %>
