@@ -4,7 +4,7 @@
     <h1><%= @service.title %></h1>
     <p><%= @service.description %></p>
     <%= form_tag offers_path, class: 'form-inline home-search', method: :get do %>
-      <%= select_tag 'query', options_from_collection_for_select(@services, 'id', 'title', params[:id]), prompt: 'All offers', class: "form-control mr-2" %>
+      <%= select_tag 'query', options_from_collection_for_select(@services, 'id', 'title', params[:id]), prompt: 'Toutes nos offres', class: "form-control mr-2" %>
       <%= text_field_tag 'date', Date.today.strftime("%d-%m-%Y"), class: "datepicker form-control mr-2" %>
       <%= submit_tag 'Trouver mon prestataire', class: "btn btn-primary" %>
     <% end %>
