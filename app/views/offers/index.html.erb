@@ -65,6 +65,7 @@
           <h1>Mes offres</h1>
           <p>Vous n'avez publié aucune offre. <%= link_to "Publier ma première offre >", new_offer_path %> </p>
         <% else %>
+        <div class="mt-3"><h1>Mes offres:</h1></div>
         <div class="cards pt-4">
           <% @offers.each do |offer| %>
             <%= link_to offer_path(offer, date: params[:date]) do %>
