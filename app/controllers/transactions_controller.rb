@@ -56,7 +56,7 @@ class TransactionsController < ApplicationController
   end
 
   def create_transaction
-    if @transaction.save!
+    if @transaction.save
       flash[:success] = "Transaction successfully created"
       redirect_to transactions_path
     else
