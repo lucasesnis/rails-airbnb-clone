@@ -2,7 +2,7 @@
 
 <div class="container mt-4">
 <% if params[:commit] != "My offers" %>
-  <div class="container">
+  <div class="container pb-4">
     <%= form_tag offers_path, class: 'form-inline home-search', method: :get do %>
       <%= select_tag 'query', options_from_collection_for_select(@services, 'id', 'title', params[:query]), class: "form-control mr-2" %>
       <%= text_field_tag 'date', params[:date], class: "datepicker form-control mr-2" %>
