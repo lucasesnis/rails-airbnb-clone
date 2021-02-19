@@ -10,9 +10,13 @@
     <% end %>
   </div>
 <% elsif params[:commit] == "My offers" %>
-  
-  <h1>Demandes en attente</h1>
-  
+
+  <% if @transactions.count == 0 %>
+    <h1>Aucune transaction en attente</h1>
+  <% else %>
+    <h1>Transactions en attente :</h1>
+  <% end %>
+
   <div class="container cards">
     <% @transactions.each do |transaction| %>
       <% if transaction.statut == "pending" %>
@@ -33,8 +37,12 @@
       <%end%>
     <% end %>
   </div>
-  
-  <h1>Demandes acceptées</h1>
+
+  <% if @transactions.count == 0 %>
+    <h1>Aucune transaction accceptée</h1>
+  <% else %>
+    <h1>Transactions acceptées :</h1>
+  <% end %>
   <div class="container cards">
     <% @transactions.each do |transaction| %>
       <% if transaction.statut == "Confirmed" %>
