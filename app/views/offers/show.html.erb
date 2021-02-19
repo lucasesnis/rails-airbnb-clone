@@ -2,8 +2,10 @@
 <div class="container">
   <div class="container">
     <div class="row">
-      <div class="col-8 px-0">
-        <div class="d-flex justify-content-between border-bottom align-items-center my-4">
+
+
+      <div class="col-8 px-5 py-4">
+        <div class="d-flex justify-content-between border-bottom align-items-center mb-4">
           <h1><%= @offer.title %></h1>
           <h1><%= @offer.price %> €</h1>
         </div>
@@ -15,25 +17,30 @@
           <%= cl_image_tag @offer.user.avatar, class: "avatar-xtra-large", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         </div>
       </div>
+
+      <div class="col-4 card-order">
+        <% if user_signed_in? %>
+          <% if @offer.user_id != current_user.id %>
+            <div class="container mt-4">
+              <%= simple_form_for [@offer, @transaction] do |f| %>
+                <%= f.input :date, label: 'Date', as: :date, html5: true, input_html: {value: @date} %>
+                <%= f.input :boat_size, label: 'Quel est la taille de votre bateau ? (en m²)' %>
+                <%= f.button :submit, 'Demander une prestation', class: 'btn btn-primary' %>
+              <% end %>
+            </div>
+          <% elsif @offer.user_id == current_user.id %>
+            <div class="container mt-4">
+              <%= link_to edit_offer_path(@offer) do %><button type="button" class="btn btn-warning">Modifier l'offre</button><% end %>
+              <%= link_to offer_path(@offer), method: :delete do %><button type="button" class="btn btn-danger">Supprimer l'offre</button><% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <h4 class="mt-4">Connectez-vous pour réserver un créneau !</h4>
+        <% end %>
+      </div>
+
     </div>
   </div>
 
-  <% if user_signed_in? %>
-    <% if @offer.user_id != current_user.id %>
-      <div class="container mt-4">
-        <%= simple_form_for [@offer, @transaction] do |f| %>
-          <%= f.input :date, label: 'Date', as: :date, html5: true, input_html: {value: @date} %>
-          <%= f.input :boat_size, label: 'Quel est la taille de votre bateau ? (en m²)' %>
-          <%= f.button :submit, 'Demander une prestation', class: 'btn btn-primary' %>
-        <% end %>
-      </div>
-    <% elsif @offer.user_id == current_user.id %>
-      <div class="container mt-4">
-        <%= link_to edit_offer_path(@offer) do %><button type="button" class="btn btn-warning">Modifier l'offre</button><% end %>
-        <%= link_to offer_path(@offer), method: :delete do %><button type="button" class="btn btn-danger">Supprimer l'offre</button><% end %>
-      </div>
-    <% end %>
-  <% else %>
-    <h4 class="mt-4">Connectez-vous pour réserver un créneau !</h4>
-  <% end %>
+
 </div>
