@@ -11,12 +11,12 @@
   </div>
 </div>
 
-<div class="container"> 
+<div class="container">
   <h2 class="my-4">Les offres à la une</h2>
 
   <div class="row">
     <div class="container cards mb-2">
-      <% @offers.each do |offer| %>
+      <% @offers.take(3).each do |offer| %>
         <%= link_to offer_path(offer) do %>
             <div class="card-offer">
               <div class="text-center mb-4">
@@ -33,4 +33,5 @@
       <% end %>
     </div>
   </div>
+  <%= link_to "Toutes les offres >", offers_path(query: @service, commit: "Trouver mon prestataire") %>
 </div>
