@@ -11,16 +11,24 @@
   </div>
 <% elsif params[:commit] == "My offers" %>
 <<<<<<< HEAD
+<<<<<<< HEAD
   
   <h1>Demandes en attente</h1>
   
 =======
+=======
+
+>>>>>>> 28e8b5d5f98c7fd7e6b5973ca6e6502116d31734
   <% if @transactions.count == 0 %>
     <h1>Aucune transaction en attente</h1>
   <% else %>
     <h1>Transactions en attente :</h1>
   <% end %>
+<<<<<<< HEAD
 >>>>>>> 74f89366071d5bd82e217981a4ac8dddabdd2075
+=======
+
+>>>>>>> 28e8b5d5f98c7fd7e6b5973ca6e6502116d31734
   <div class="container cards">
     <% @transactions.each do |transaction| %>
       <% if transaction.statut == "pending" %>
@@ -42,15 +50,22 @@
     <% end %>
   </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
   
   <h1>Demandes acceptées</h1>
 =======
+=======
+
+>>>>>>> 28e8b5d5f98c7fd7e6b5973ca6e6502116d31734
   <% if @transactions.count == 0 %>
     <h1>Aucune transaction accceptée</h1>
   <% else %>
     <h1>Transactions acceptées :</h1>
   <% end %>
+<<<<<<< HEAD
 >>>>>>> 74f89366071d5bd82e217981a4ac8dddabdd2075
+=======
+>>>>>>> 28e8b5d5f98c7fd7e6b5973ca6e6502116d31734
   <div class="container cards">
     <% @transactions.each do |transaction| %>
       <% if transaction.statut == "Confirmed" %>
