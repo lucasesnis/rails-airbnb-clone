@@ -1,5 +1,6 @@
 <div class="pl-2 pt-3"> <%= link_to "< Back", services_path, class: "back" %> </div>
 
+<div class="container mt-4">
 <% if params[:commit] != "My offers" %>
   <div class="container">
     <%= form_tag offers_path, class: 'form-inline home-search', method: :get do %>
@@ -9,11 +10,13 @@
     <% end %>
   </div>
 <% elsif params[:commit] == "My offers" %>
+
   <% if @transactions.count == 0 %>
     <h1>Aucune transaction en attente</h1>
   <% else %>
     <h1>Transactions en attente :</h1>
   <% end %>
+
   <div class="container cards">
     <% @transactions.each do |transaction| %>
       <% if transaction.statut == "pending" %>
@@ -34,6 +37,7 @@
       <%end%>
     <% end %>
   </div>
+
   <% if @transactions.count == 0 %>
     <h1>Aucune transaction accceptée</h1>
   <% else %>
@@ -55,10 +59,9 @@
       <% end %>
     <% end %>
   </div>
-  <h1>Mes offres :</h1>
+  <h1>Mes offres</h1>
 <% end %>
 
-<div class="container mt-4">
   <div class="row">
     <div class="container cards">
       <% @offers.each do |offer| %>
