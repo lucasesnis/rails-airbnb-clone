@@ -33,5 +33,5 @@
       <% end %>
     </div>
   </div>
-  <%= link_to "Toutes les offres >", offers_path(query: @service, commit: "Trouver mon prestataire") %>
+  <div class=" d-flex justify-content-end"> <%= link_to "Toutes les offres >", offers_path(query: @service, commit: "Trouver mon prestataire"), class: "offer_link btn border" %></div>
 </div>
