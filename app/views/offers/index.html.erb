@@ -71,10 +71,10 @@
 
       <div class="container">
           <% if @offers.count == 0 %>
-            <h1 class="mt-4">Mes offres</h1>
+            <h1 class="mt-4"><%= @textOffer %></h1>
             <p>Vous n'avez publié aucune offre. <%= link_to "Publier ma première offre >", new_offer_path %> </p>
           <% else %>
-          <h1 class="mt-4">Mes offres</h1>
+          <h1 class="mt-4"><%= @textOffer %></h1>
           <div class="container cards">
             <% @offers.each do |offer| %>
               <%= link_to offer_path(offer, date: params[:date]) do %>
