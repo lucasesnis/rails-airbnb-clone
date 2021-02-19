@@ -58,20 +58,19 @@ class TransactionsController < ApplicationController
   def create_transaction
     if @transaction.save
       flash[:success] = "Transaction successfully created"
-      redirect_to transactions_path
     else
       flash[:error] = "Something went wrong"
-      redirect_to offers_path
     end
+    redirect_to transactions_path
   end
 
   def update_transaction
     if @transaction.update_attributes(statut: @transaction.statut)
       flash[:success] = "Object was successfully updated"
-      redirect_to transactions_path
     else
       flash[:error] = "Something went wrong"
       render 'edit'
     end
+    redirect_to offers_path(commit: "My offers")
   end
 end

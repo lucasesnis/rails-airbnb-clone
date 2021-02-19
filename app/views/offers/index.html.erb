@@ -26,7 +26,7 @@
               Demandé par: <%= User.find(transaction.user_id).first_name %> <%= User.find(transaction.user_id).last_name %> <br>
               Nombre de m²: <%= transaction.boat_size %> <br>
               Prix total: <%= transaction.transaction_price %> <br>
-              Statut : <%= transaction.statut %>
+              Date : <%= transaction.date %>
               <%= simple_form_for [transaction.offer, transaction] do |f| %>
                 <%= f.button :submit, 'Accepter', class: 'btn btn-success' %>
                 <%= f.button :submit, 'Refuser', class: 'btn btn-danger' %>
